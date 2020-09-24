@@ -41,6 +41,16 @@ public class Record implements Serializable {
 		this.game = game;
 	}
 
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -65,11 +75,11 @@ public class Record implements Serializable {
 		this.age = age;
 	}
 
-	public Instant getNoment() {
+	public Instant getMoment() {
 		return moment;
 	}
 
-	public void setNoment(Instant moment) {
+	public void setMoment(Instant moment) {
 		this.moment = moment;
 	}
 
@@ -79,14 +89,6 @@ public class Record implements Serializable {
 
 	public void setGame(Game game) {
 		this.game = game;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
 	}
 
 	@Override
