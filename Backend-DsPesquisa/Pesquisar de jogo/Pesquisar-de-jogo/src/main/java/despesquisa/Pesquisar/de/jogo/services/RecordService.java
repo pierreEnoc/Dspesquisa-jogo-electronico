@@ -3,6 +3,9 @@ package despesquisa.Pesquisar.de.jogo.services;
 import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +38,12 @@ public class RecordService {
 		
 		entity = recordRepository.save(entity);
 		return new RecordDTO(entity);
+	}
+    
+	@Transactional(readOnly = true)
+	public Page<RecordDTO> findBYMoments(Instant minDate, Instant maxDate, PageRequest pageRequest) {
+	
+		return recordRepository.findByMoments(minDate, maxDate, pageRequest).map(x -> new RecordDTO(x));
 	}
 
 }

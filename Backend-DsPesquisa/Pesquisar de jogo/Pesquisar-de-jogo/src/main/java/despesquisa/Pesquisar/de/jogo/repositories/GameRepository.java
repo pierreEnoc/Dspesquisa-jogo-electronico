@@ -7,5 +7,5 @@ import despesquisa.Pesquisar.de.jogo.entities.Game;
 
 @Repository
 public interface GameRepository extends JpaRepository<Game, Long> {
-
+	
 }
